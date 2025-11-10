@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handle Windows</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at 20% 20%, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff, 0 0 25px #00eaff;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff; }
+      to { text-shadow: 0 0 25px #00eaff, 0 0 50px #00eaff; }
+    }
+
+    .button-container {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background: transparent;
+      border: 2px solid #00eaff;
+      color: #00eaff;
+      font-size: 1.2rem;
+      padding: 15px 30px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(0,234,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:hover {
+      background: #00eaff;
+      color: #0a0a0a;
+      box-shadow: 0 0 25px #00eaff, 0 0 50px #00eaff;
+      transform: scale(1.08);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 0 10px #00eaff;
+    }
+
+    /* Background floating particles */
+    .particle {
+      position: absolute;
+      background: rgba(0,234,255,0.4);
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0); opacity: 0; }
+      50% { opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Handle Windows</h1>
+  <div class="button-container">
+    <button onclick="openNewWindow()">Open New Window</button>
+    <button onclick="openNewTab()">Open New Tab</button>
+    <button onclick="openNewBrowser()">Open New Browser</button>
+  </div>
+
+  <footer>✨ Created by Ganesh — Powered by Ganesh Teaching Studio ✨</footer>
+
+  <script>
+    function openNewWindow() {
+      window.open('https://www.google.com', '_blank', 'width=600,height=400');
+    }
+
+    function openNewTab() {
+      window.open('https://www.google.com', '_blank');
+    }
+
+    function openNewBrowser() {
+      // Simulates a full browser-like popup window
+      window.open(
+        'https://www.google.com',
+        '_blank',
+        'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=100,width=1000,height=700'
+      );
+    }
+
+    // Floating particle background effect
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      const size = Math.random() * 8 + 4 + 'px';
+      particle.classList.add('particle');
+      particle.style.width = size;
+      particle.style.height = size;
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = (8 + Math.random() * 5) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
